@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANGELA'S Poultry Farm</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #FDFBF7;
+      color: #18352B;
+      font-family: Arial, sans-serif;
+    }
+
+    .green { background: #065F46; }
+    .gold { background: #D97706; }
+
+    .btn {
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .field {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      background: white;
+      color: #18352B;
+    }
+
+    .age-card {
+      padding: 18px;
+      border: 2px solid #e5e7eb;
+      border-radius: 14px;
+      background: white;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .age-card.selected {
+      border-color: #065F46;
+      background: #ecfdf5;
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-white shadow-sm">
+  <div class="max-w-6xl mx-auto p-5 flex justify-between items-center">
+    <div>
+      <h1 class="text-xl font-extrabold text-emerald-800">
+        🐓 ANGELA'S POULTRY FARM
+      </h1>
+      <p class="text-sm text-gray-500">
+        Raised with care. Ready for your table.
+      </p>
+    </div>
+    <a href="#order" class="btn green text-white no-underline">
+      Order Now
+    </a>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="green text-white">
+  <div class="max-w-6xl mx-auto px-6 py-16">
+    <p class="text-amber-300 font-bold mb-3">
+      YOUR LOCAL FARM, MADE EASY
+    </p>
+
+    <h2 class="text-4xl md:text-6xl font-extrabold mb-5">
+      Good Chickens.<br>
+      <span class="text-amber-300">Easy Ordering.</span>
+    </h2>
+
+    <p class="max-w-xl text-lg mb-7">
+      Order chickens from your phone, calculate your estimated
+      total, and prepare your pickup or delivery reservation.
+    </p>
+
+    <a href="#order"
+       class="btn gold text-white inline-block no-underline">
+      🐔 Start My Order
+    </a>
+  </div>
+</section>
+
+<main class="max-w-6xl mx-auto px-5 py-10">
+
+  <!-- QUICK FEATURES -->
+  <div class="grid md:grid-cols-3 gap-4 mb-10">
+    <div class="bg-white shadow-sm rounded-xl p-5">
+      <h3 class="font-bold text-lg">🧮 Price Calculator</h3>
+      <p class="text-gray-500 text-sm">
+        Calculate your estimated order total.
+      </p>
+    </div>
+
+    <div class="bg-white shadow-sm rounded-xl p-5">
+      <h3 class="font-bold text-lg">📩 Quick Reservation</h3>
+      <p class="text-gray-500 text-sm">
+        Generate a message for the farm.
+      </p>
+    </div>
+
+    <div class="bg-white shadow-sm rounded-xl p-5">
+      <h3 class="font-bold text-lg">🌱 Care Guide</h3>
+      <p class="text-gray-500 text-sm">
+        Learn basic chicken care reminders.
+      </p>
+    </div>
+  </div>
+
+  <!-- ORDER FORM -->
+  <section id="order" class="grid lg:grid-cols-3 gap-6">
+
+    <div class="lg:col-span-2 bg-white shadow-sm rounded-2xl p-6">
+      <h2 class="text-3xl font-bold mb-2">Quick Order</h2>
+      <p class="text-gray-500 mb-6">
+        Choose your preferred chicken age, quantity, and breed.
+      </p>
+
+      <label class="font-bold block mb-3">
+        1. Choose Chicken Age
+      </label>
+
+      <div class="grid sm:grid-cols-3 gap-3 mb-6">
+        <button type="button"
+          class="age-card selected"
+          data-age="4">
+          <div class="text-3xl mb-2">🐤</div>
+          <strong>4 Months</strong>
+          <p class="text-emerald-800 font-bold mt-2">
+            ₱150–₱250
+          </p>
+        </button>
+
+        <button type="button"
+          class="age-card"
+          data-age="5">
+          <div class="text-3xl mb-2">🐔</div>
+          <strong>5 Months</strong>
+          <p class="text-emerald-800 font-bold mt-2">
+            ₱250–₱350
+          </p>
+        </button>
+
+        <button type="button"
+          class="age-card"
+          data-age="6">
+          <div class="text-3xl mb-2">🐓</div>
+          <strong>6+ Months</strong>
+          <p class="text-emerald-800 font-bold mt-2">
+            ₱350–₱450
+          </p>
+        </button>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5">
+
+        <div>
+          <label for="quantity" class="font-bold block mb-2">
+            2. Number of Chickens
+          </label>
+          <input id="quantity" class="field"
+                 type="number" min="1" max="10000" value="10">
+        </div>
+
+        <div>
+          <label for="breed" class="font-bold block mb-2">
+            3. Preferred Breed
+          </label>
+          <select id="breed" class="field">
+            <option>Rhode Island Red</option>
+            <option>Australorp</option>
+            <option>Native Chicken</option>
+            <option>Broiler</option>
+            <option>Other / Please Advise</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="date" class="font-bold block mb-2">
+            4. Pickup or Delivery Date
+          </label>
+          <input id="date" class="field" type="date">
+        </div>
+
+        <div>
+          <label for="contact" class="font-bold block mb-2">
+            5. Phone Number or Email
+          </label>
+          <input id="contact" class="field"
+                 placeholder="Enter your contact details">
+        </div>
+      </div>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6 text-sm">
+        <strong>Reminder:</strong> Prices are estimates per chicken.
+        Confirm the final price, availability, and delivery fee
+        directly with the farm.
+      </div>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <aside class="bg-white shadow-sm rounded-2xl p-6 h-fit">
+      <h2 class="text-2xl font-bold mb-5">Order Summary</h2>
+
+      <div class="flex justify-between py-3 border-b">
+        <span>Chicken Age</span>
+        <strong id="summaryAge">4 Months</strong>
+      </div>
+
+      <div class="flex justify-between py-3 border-b gap-3">
+        <span>Breed</span>
+        <strong id="summaryBreed" class="text-right">
+          Rhode Island Red
+        </strong>
+      </div>
+
+      <div class="flex justify-between py-3 border-b">
+        <span>Quantity</span>
+        <strong id="summaryQuantity">10 birds</strong>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-gray-500 text-sm">
+          Estimated Total Range
+        </p>
+        <p id="total"
+           class="text-3xl font-extrabold text-emerald-800 mt-2">
+          ₱1,500 – ₱2,500
+        </p>
+        <p class="text-gray-500 text-sm mt-2">
+          Per chicken: <span id="unitPrice">₱150–₱250</span>
+        </p>
+      </div>
+
+      <button id="generate"
+        class="btn green text-white w-full mt-6">
+        Generate Reservation
+      </button>
+
+      <div id="messageArea" class="hidden mt-5">
+        <label for="message" class="font-bold block mb-2">
+          Reservation Message
+        </label>
+
+        <textarea id="message"
+          class="field" rows="8"></textarea>
+
+        <button id="copy"
+          class="btn w-full border mt-2">
+          Copy Message
+        </button>
+
+        <a id="sms"
+          class="btn gold text-white block text-center mt-3 no-underline"
+          href="#">
+          Send via SMS
+        </a>
+
+        <a id="email"
+          class="btn green text-white block text-center mt-3 no-underline"
+          href="#">
+          Send via Email
+        </a>
+      </div>
+    </aside>
+  </section>
+
+  <!-- CARE GUIDE -->
+  <section class="mt-12 bg-white shadow-sm rounded-2xl p-6">
+    <h2 class="text-3xl font-bold mb-3">
+      🌱 Farm Care Guide
+    </h2>
+
+    <p class="text-gray-500 mb-5">
+      Basic reminders for keeping chickens healthy.
+      Consult a veterinarian for vaccination and treatment advice.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <article class="bg-emerald-50 rounded-xl p-5">
+        <h3 class="font-bold text-lg mb-2">🍽️ Proper Feeding</h3>
+        <p class="text-sm">
+          Provide feed appropriate for the bird's age and purpose.
+          Keep clean drinking water available throughout the day.
+        </p>
+      </article>
+
+      <article class="bg-emerald-50 rounded-xl p-5">
+        <h3 class="font-bold text-lg mb-2">🏡 Clean Shelter</h3>
+        <p class="text-sm">
+          Keep the chicken house dry, ventilated, and protected
+          from rain, predators, and extreme heat.
+        </p>
+      </article>
+
+      <article class="bg-emerald-50 rounded-xl p-5">
+        <h3 class="font-bold text-lg mb-2">💚 Daily Monitoring</h3>
+        <p class="text-sm">
+          Check appetite, movement, and behavior every day.
+          Seek veterinary help if birds show unusual symptoms.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="green text-white rounded-2xl p-7 mt-10">
+    <h2 class="text-3xl font-bold mb-3">
+      Ready to Order?
+    </h2>
+    <p class="mb-5">
+      Prepare your reservation and contact ANGELA'S Poultry Farm.
+    </p>
+    <p>📱 SMS: 0991-455-6688</p>
+    <p>📧 Email: Angelalariwan@gmail.com</p>
+    <a href="#order"
+       class="btn gold text-white inline-block mt-5 no-underline">
+      Plan My Order ↑
+    </a>
+  </section>
+
+  <footer class="text-center text-gray-500 py-8 text-sm">
+    © 2026 ANGELA'S Poultry Farm. All rights reserved.
+  </footer>
+</main>
+
+<script>
+  const prices = {
+    4: [150, 250],
+    5: [250, 350],
+    6: [350, 450]
+  };
+
+  let age = 4;
+
+  const $ = id => document.getElementById(id);
+
+  const money = amount =>
+    "₱" + Math.round(amount).toLocaleString("en-PH");
+
+  function updateSummary() {
+    let quantity = Math.floor(Number($("quantity").value) || 1);
+    quantity = Math.max(1, Math.min(10000, quantity));
+    $("quantity").value = quantity;
+
+    const price = prices[age];
+
+    $("summaryAge").textContent =
+      age === 6 ? "6+ Months" : age + " Months";
+
+    $("summaryBreed").textContent = $("breed").value;
+    $("summaryQuantity").textContent =
+      quantity + (quantity === 1 ? " bird" : " birds");
+
+    $("total").textContent =
+      money(price[0] * quantity) + " – " +
+      money(price[1] * quantity);
+
+    $("unitPrice").textContent =
+      money(price[0]) + "–" + money(price[1]);
+
+    document.querySelectorAll(".age-card").forEach(button => {
+      button.classList.toggle(
+        "selected",
+        Number(button.dataset.age) === age
+      );
+    });
+  }
+
+  document.querySelectorAll(".age-card").forEach(button => {
+    button.addEventListener("click", () => {
+      age = Number(button.dataset.age);
+      updateSummary();
+    });
+  });
+
+  $("quantity").addEventListener("input", updateSummary);
+  $("breed").addEventListener("change", updateSummary);
+
+  function generateMessage() {
+    const quantity = Number($("quantity").value);
+    const price = prices[age];
+
+    const preferredDate = $("date").value || "To be confirmed";
+    const contact = $("contact").value.trim() || "Not provided";
+
+    return `Hello ANGELA'S Poultry Farm!
+
+I would like to make a chicken reservation.
+
+Chicken Age: ${age === 6 ? "6 months and older" : age + " months"}
+Quantity: ${quantity} chickens
+Preferred Breed: ${$("breed").value}
+Estimated Total: ${money(price[0] * quantity)} – ${money(price[1] * quantity)}
+Preferred Pickup/Delivery Date: ${preferredDate}
+My Contact Details: ${contact}
+
+Please confirm the availability, final price, and pickup or delivery arrangements.
+
+Thank you!`;
+  }
+
+  $("generate").addEventListener("click", () => {
+    updateSummary();
+
+    $("message").value = generateMessage();
+    $("messageArea").classList.remove("hidden");
+
+    $("sms").href =
+      "sms:09914556688?body=" +
+      encodeURIComponent($("message").value);
+
+    $("email").href =
+      "mailto:Angelalariwan@gmail.com?subject=" +
+      encodeURIComponent("Poultry Reservation") +
+      "&body=" + encodeURIComponent($("message").value);
+
+    $("messageArea").scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  });
+
+  $("copy").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText($("message").value);
+      $("copy").textContent = "Copied!";
+    } catch (error) {
+      $("message").select();
+      document.execCommand("copy");
+      $("copy").textContent = "Copied!";
+    }
+
+    setTimeout(() => {
+      $("copy").textContent = "Copy Message";
+    }, 1500);
+  });
+
+  // Prevent selecting a past date.
+  const today = new Date();
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+  $("date").min = today.toISOString().split("T")[0];
+
+  updateSummary();
+</script>
+
+</body>
+</html>
